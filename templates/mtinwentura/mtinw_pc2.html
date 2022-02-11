@@ -1,0 +1,67 @@
+{% extends "mtinwentura/base.html" %}
+
+{% block content %}
+<div class="container"> 
+	<table class="table table-primary">
+	<tr>
+		<td align"left">
+		<form  name="form" method="POST" enctype="multipart/form-data" action=".">
+		    {% csrf_token %}
+		    <input id="id_path" class="form-control-file" type="file" name="path">
+		    <button class="btn btn-primary" type="submit"> IMPORTUJ </button>
+		</form>
+		</td>
+		<td style="text-align: center">
+		<a href="http://jan-svr-intra02:8000/mtinwentura/export_xlsx_bazowe/">EXPORT XLSX</a>
+		</td>
+		<td style="text-align: right">
+		<a href="http://jan-svr-intra02:8000/mtinwentura/zerowanie_indeks_bazowy/" style="float: right;"  >USUN WSZYSTKO!!!</a>
+		</td>
+	</tr>
+	</table>
+
+
+
+    <table class="table table-primary table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Barcode</th>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Nieogr.wykorz.</th>
+                <th scope="col">Ilosc</th>
+                <th scope="col">Lokalizacja</th>
+                <th scope="col">Ost.Skanowanie</th>
+            <tr>
+        </thead>
+        <tbody>
+           {%for indeks in indeksy%}
+		<tr>
+		    <td>
+		    {{indeks.barcode}}
+		    </td>
+		    <td>
+			{{indeks.nazwa}}
+		    </td>
+		    <td>
+			{{indeks.nieogr_wyk}}
+		    </td>
+		    <td>
+			{{indeks.ilosc}}
+		    </td>
+		    <td>
+			{{indeks.lokalizacja}}
+		    </td>
+		    <td>
+			{%if indeks.data_skan != None %}
+			{{indeks.data_skan|date:"d-m-Y H:i:s"}}
+			{%endif%}
+			
+		    </td>
+		</tr>
+		{%endfor%}
+        </tbody>
+
+    </table>
+</div>
+
+{% endblock content %}

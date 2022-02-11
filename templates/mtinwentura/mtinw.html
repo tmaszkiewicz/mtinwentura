@@ -1,0 +1,11 @@
+{% extends "stolarnia/base.html" %}
+
+{% block content %}
+<form action="" method="POST">
+{% csrf_token %}
+<input type="text" id="barcode" name="barcode">
+<input type="submit" value="submit">
+</form>
+{{index}}
+{% endblock content %}
+

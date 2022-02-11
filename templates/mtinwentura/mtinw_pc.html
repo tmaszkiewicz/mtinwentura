@@ -1,0 +1,43 @@
+{% extends "mtinwentura/base.html" %}
+
+{% block content %}
+
+
+<div class="container">  
+    <a href="http://jan-svr-intra02:8000/mtinwentura/export_xlsx/">EXPORT_XLSX</a>  
+<!--   <a href="http://jan-svr-intra02:8000/mtinwentura/kopiuj_bazowe/">KOPIUJ JAKO BAZOWE</a>-->
+    <a href="http://jan-svr-intra02:8000/mtinwentura/zerowanie_indeks/" style="float: right;"  >USUN WSZYSTKO!!!</a>
+    <table class="table table-primary table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Barcode</th>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Ilosc</th>
+                <th scope="col">data skanowania</th>
+            <tr>
+        </thead>
+        <tbody>
+            {%for indeks in indeksy%}
+        <tr>
+            <td>
+            {{indeks.barcode}}
+            </td>
+
+            <td>
+		{{indeks.nazwa}}
+            </td>
+	    <td>
+                {{indeks.ilosc}}
+            </td>
+            <td>
+                {{indeks.data|date:"d-m-Y H:i:s"}}
+            </td>
+        </tr>
+        {%endfor%}
+        </tbody>
+
+    </table>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,7 @@
+__init__.py
+*.py.*
+*.html.*
+pliki/*.xlsx
+pliki/*.XLSX
+migrations/
+__pycache__/

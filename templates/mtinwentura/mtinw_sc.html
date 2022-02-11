@@ -1,0 +1,19 @@
+{% extends "stolarnia/base.html" %}
+
+{% block content %}
+<form action="" method="POST">
+{% csrf_token %}
+
+<input type="text" id="barcode"  onClick="focusMethod()" name="barcode">
+<input type="submit" on="focusMethod()" value="submit">
+</form>
+<button type="button" onkeyup="focusMethod()">Click me to focus on the text field!</button>
+{{barcode}}
+<script>
+
+focusMethod = function getFocus() {
+    document.getElementById("barcode").focus();
+  }
+</script>
+{% endblock content %}
+
